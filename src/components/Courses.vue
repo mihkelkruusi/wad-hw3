@@ -22,8 +22,8 @@
         <br>
         <br>
         <div>
-            <button id="add-course-button" class="blue-button" @click="showAddCourses = !showAddCourses">+</button>
-            <add-course v-show="showAddCourses"></add-course>
+            <button id="add-course-button" class="blue-button" @click="setShowAddCourses">+</button>
+            <add-course @cancel="setShowAddCourses" v-show="showAddCourses"></add-course>
         </div>
     </div>
 </template>
@@ -42,6 +42,11 @@
                     new Course("The perfect high", 4, 99)
                 ],
                 showAddCourses: false
+            }
+        },
+        methods: {
+            setShowAddCourses() {
+                this.showAddCourses = !this.showAddCourses;
             }
         },
         props: ["show"],
