@@ -23,7 +23,7 @@
         <br>
         <div>
             <button id="add-course-button" class="blue-button" @click="setShowAddCourses">+</button>
-            <add-course @cancel="setShowAddCourses" v-show="showAddCourses"></add-course>
+            <add-course @cancel="setShowAddCourses" @addCourse="addNewCourse" v-show="showAddCourses"></add-course>
         </div>
     </div>
 </template>
@@ -47,6 +47,10 @@
         methods: {
             setShowAddCourses() {
                 this.showAddCourses = !this.showAddCourses;
+            },
+            addNewCourse(course){
+                this.courses.push(course);
+                this.setShowAddCourses();
             }
         },
         props: ["show"],
