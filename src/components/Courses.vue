@@ -11,7 +11,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(course, index) in courses" :key="index">
+            <tr v-for="(course, index) in user.courses" :key="index">
                 <td>{{ index + 1 }}</td>
                 <td>{{ course.title }}</td>
                 <td>{{ course.semester }}</td>
@@ -30,17 +30,16 @@
 
 <script>
     import AddCourse from '@/components/AddCourse.vue'
-    import Course from '@/models/Course'
+    import Course from "../models/Course";
+    import User from "../models/User";
 
     export default {
         data() {
             return {
-                courses: [
-                    new Course("Introduction to Cannabis Cultivation", 1, 82),
+                user: new User("ef", "ef", "fef", "345", [ new Course("Introduction to Cannabis Cultivation", 1, 82),
                     new Course("From seed to bud I", 2, 85),
                     new Course("Plant biology", 3, 65),
-                    new Course("The perfect high", 4, 99)
-                ],
+                    new Course("The perfect high", 4, 99)]),
                 showAddCourses: false
             }
         },
@@ -49,11 +48,13 @@
                 this.showAddCourses = !this.showAddCourses;
             },
             addNewCourse(course){
-                this.courses.push(course);
+                this.user.addCourse(course);
                 this.setShowAddCourses();
             }
         },
-        props: ["show"],
+        props:
+            ["show"]
+        ,
         components: {"add-course": AddCourse}
     }
 </script>
