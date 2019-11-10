@@ -6,8 +6,8 @@
         <section id="container">
             <section id="main">
                 <div class="content">
-                    <profile :show="showProfile"></profile>
-                    <courses :show="!showProfile"></courses>
+                    <profile :show="showProfile" :user="user"></profile>
+                    <courses :show="!showProfile" :user="user"></courses>
                 </div>
                 <div class="controls">
                     <button id="profile-button" class="pill" :class="{active: showProfile}" @click="switchContainer">Profile</button>
@@ -23,6 +23,8 @@
     import Courses from '@/components/Courses.vue'
     import Profile from '@/components/Profile.vue'
     import Footer from '@/components/Footer'
+    import Course from "./models/Course";
+    import User from "./models/User";
 
     export default {
         name: 'app',
@@ -31,6 +33,10 @@
         },
         data() {
             return {
+                user: new User("Just", "Bob", "20/04/1990", "Cannabis Cultivation", [ new Course("Introduction to Cannabis Cultivation", 1, 82),
+                new Course("From seed to bud I", 2, 85),
+                new Course("Plant biology", 3, 65),
+                new Course("The perfect high", 4, 99)]),
                 showProfile: true
             }
         },
