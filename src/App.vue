@@ -15,28 +15,19 @@
                 </div>
             </section>
         </section>
-        <footer>
-            <ul class="links">
-                <li>
-                    <a href="https://ois2.ut.ee/" target="_blank">OIS</a>
-                </li>
-                <li>
-                    <a href="https://courses.cs.ut.ee/" target="_blank">Courses</a>
-                </li>
-            </ul>
-        </footer>
+        <Footer/>
     </main>
 </template>
 
 <script>
     import Courses from '@/components/Courses.vue'
     import Profile from '@/components/Profile.vue'
+    import Footer from '@/components/Footer'
 
     export default {
         name: 'app',
         components: {
-            courses: Courses,
-            profile: Profile
+            Courses, Profile, Footer
         },
         data() {
             return {
